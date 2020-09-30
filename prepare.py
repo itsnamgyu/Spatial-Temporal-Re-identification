@@ -8,7 +8,11 @@ download_path = "./raw-dataset/DukeMTMC-reID/"
 parser = argparse.ArgumentParser(description='prepare')
 parser.add_argument('--Market', action='store_true', help='prepare dataset market1501')
 parser.add_argument('--Duke', action='store_true', help='prepare dataset Duke-MTMC')
+parser.add_argument('--Path', type=str, help='dataset location (should contain "/query")')
 opt = parser.parse_args()
+
+if opt.Path:
+    download_path = opt.Path
 
 if not os.path.isdir(download_path):
     print('please change the download_path')
